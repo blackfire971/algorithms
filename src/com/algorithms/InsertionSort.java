@@ -5,7 +5,8 @@ package com.algorithms;
  *
  * O(n2)
  *
- * Some of (or whole) sorted sequence move right and insert target object to proper position
+ * Some of (or whole, decide by if inner while loop match condition) sorted sequence move right,
+ * and insert target object to proper position
  * 1) Store target object in variable
  * 2) Check the target object with the last object of previous sorted sequence
  * 3) Copy the last object of sorted sequence and override the target object position(in array)
