@@ -2,6 +2,16 @@ package com.algorithms;
 
 /**
  * Created by saml on 8/31/2017.
+ *
+ * O(n2)
+ *
+ * Some of (or whole) sorted sequence move right and insert target object to proper position
+ * 1) Store target object in variable
+ * 2) Check the target object with the last object of previous sorted sequence
+ * 3) Copy the last object of sorted sequence and override the target object position(in array)
+ * 4) For loop until condition not match
+ * 5) Set the target object to the unmatched position + 1
+ *
  */
 public class InsertionSort {
 
