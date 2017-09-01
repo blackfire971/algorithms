@@ -35,7 +35,7 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] array = {9,7,6,5,8,4,3};
+        int[] array = {31, 41, 59, 26, 41, 58};
         sortSelf(array);
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
