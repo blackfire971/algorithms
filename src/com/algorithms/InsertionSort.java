@@ -13,6 +13,8 @@ package com.algorithms;
  * 4) For loop until condition not match
  * 5) Set the target object to the unmatched position + 1
  *
+ * Incremental approach used for algorithm implementation
+ *
  */
 public class InsertionSort {
 
