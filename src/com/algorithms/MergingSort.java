@@ -20,6 +20,7 @@ public class MergingSort {
         merge_sort_recursive(arr, result, start1, end1);
         merge_sort_recursive(arr, result, start2, end2);
         int k = start;
+        //compare left and right sub array FIRST until maybe one of them is empty
         while (start1 <= end1 && start2 <= end2)
             result[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];
         while (start1 <= end1)
