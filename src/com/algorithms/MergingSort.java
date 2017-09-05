@@ -9,55 +9,41 @@ package com.algorithms;
  * Divide and conquer method used for algorithm implementation
  */
 public class MergingSort {
-    public static void sort(int[] a, int p, int q, int r) {
-        //Get the length of sub array
-        int n1 = q - p;
-        int n2 = r - q + 1;
 
-        //Create sub arrays per length
-        int[] la = new int[n1];
-        int[] ra = new int[n2];
 
-        //Initial the values of sub arrays
-        System.arraycopy(a, p, la, 0, n1);
-        System.arraycopy(a, q, ra, 0, n2);
+    public static void merge_sort_recursive(int[] arr, int[] result, int start, int end) {
+        if (start >= end)
+            return;
+        int len = end - start, mid = (len >> 1) + start;
+        int start1 = start, end1 = mid;
+        int start2 = mid + 1, end2 = end;
+        merge_sort_recursive(arr, result, start1, end1);
+        merge_sort_recursive(arr, result, start2, end2);
+        int k = start;
+        while (start1 <= end1 && start2 <= end2)
+            result[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];
+        while (start1 <= end1)
+            result[k++] = arr[start1++];
+        while (start2 <= end2)
+            result[k++] = arr[start2++];
+        for (k = start; k <= end; k++)
+            arr[k] = result[k];
+    }
 
-        //Define the index and value of sub arrays
-        int lc = 0;
-        int rc = 0;
-        int lv;
-        int rv;
-
-        //Loop in the primary array with specific length
-        for (int i = p; i < p + n1 + n2; i++) {
-            //set critical value when the index is greater than the array length
-            //for the sub array which already sort all the data in it
-            if (lc == n1) {
-                lv = Integer.MAX_VALUE;
-                rv = ra[rc];
-            } else if (rc == n2) {
-                rv = Integer.MAX_VALUE;
-                lv = la[lc];
-            } else {
-                lv = la[lc];
-                rv = ra[rc];
-            }
-            //overwrite the value in primary array with specific order
-            if (lv <= rv) {
-                a[i] = lv;
-                lc++;
-            } else {
-                a[i] = rv;
-                rc++;
-            }
-        }
+    public static void merge_sort(int[] arr) {
+        int len = arr.length;
+        int[] result = new int[len];
+        merge_sort_recursive(arr, result, 0, len - 1);
     }
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 2, 4, 5, 7, 1, 2, 3, 6, 10, 11, 12, 15};
-        sort(a, 8, 12, 15);
+        merge_sort(a);
+
         for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+            System.out.print(a[i] + ",");
         }
     }
+
+
 }
