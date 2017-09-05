@@ -4,7 +4,7 @@ package com.algorithms;
  * Created by Sam Li on 8/31/2017.
  *
  *
- * O(N)
+ * O(N*lgN)
  *
  * Divide and conquer method used for algorithm implementation
  */
@@ -17,10 +17,12 @@ public class MergingSort {
         int len = end - start, mid = (len >> 1) + start;
         int start1 = start, end1 = mid;
         int start2 = mid + 1, end2 = end;
+        //recursion use O(lgN)
         merge_sort_recursive(arr, result, start1, end1);
         merge_sort_recursive(arr, result, start2, end2);
         int k = start;
         //compare left and right sub array FIRST until maybe one of them is empty
+        //compare use O(N)
         while (start1 <= end1 && start2 <= end2)
             result[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];
         while (start1 <= end1)
@@ -34,7 +36,7 @@ public class MergingSort {
     public static void merge_sort(int[] arr) {
         int len = arr.length;
         int[] result = new int[len];
-        merge_sort_recursive(arr, result, 0, len - 1);
+        merge_sort_recursive(arr, result, 8, 15);
     }
 
     public static void main(String[] args) {
