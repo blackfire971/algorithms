@@ -26,9 +26,32 @@ public class LongestCommonPrefixSolution {
             System.out.println("out of array...");
             return result.toString();
         }
-
         return result.toString();
     }
+
+    public String longestCommonPrefix2(String[] strs) {
+        String common="";
+        int min=Integer.MAX_VALUE, prefixmin;
+        if(strs.length==1)
+            return strs[0];
+        for(int i=0; i<strs.length-1; i++){
+            if(strs[i].length()==0||strs[i+1].length()==0)
+                return "";
+            prefixmin=Math.min(min,Math.min(strs[i].length(),strs[i+1].length()));
+            while(prefixmin>0){
+                if(strs[i].substring(0,prefixmin).equalsIgnoreCase(strs[i+1].substring(0,prefixmin))){
+                    min=prefixmin;
+                    common=strs[i].substring(0,min);
+                    break;
+                }
+                prefixmin--;
+                if(prefixmin==0)
+                    return "";
+            }
+        }
+        return common;
+    }
+
 
     public static void main(String[] args) {
         LongestCommonPrefixSolution longestCommonPrefixSolution = new LongestCommonPrefixSolution();
