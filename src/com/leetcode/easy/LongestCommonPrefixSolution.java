@@ -2,11 +2,10 @@ package com.leetcode.easy;
 
 /**
  * Created by Sam Li on 9/7/2017.
- *
+ * <p>
  * Write a function to find the longest common prefix string amongst an array of strings.
  * Add try...catch block in order to avoid index out of bounds exception
- *  since these is no array or string length checking
- *
+ * since these is no array or string length checking
  */
 public class LongestCommonPrefixSolution {
 
@@ -22,7 +21,7 @@ public class LongestCommonPrefixSolution {
                 }
                 result.append(strs[0].substring(i, i + 1));
             }
-        } catch (ArrayIndexOutOfBoundsException|StringIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
             System.out.println("out of array...");
             return result.toString();
         }
@@ -30,33 +29,37 @@ public class LongestCommonPrefixSolution {
     }
 
     public String longestCommonPrefix2(String[] strs) {
-        String common="";
-        int min=Integer.MAX_VALUE, prefixmin;
-        if(strs.length==1)
+        String result = "";
+        int resultLength = Integer.MAX_VALUE;
+
+        if (strs == null || strs.length == 0) {
+            return result;
+        } else if (strs.length == 1) {
             return strs[0];
-        for(int i=0; i<strs.length-1; i++){
-            if(strs[i].length()==0||strs[i+1].length()==0)
-                return "";
-            prefixmin=Math.min(min,Math.min(strs[i].length(),strs[i+1].length()));
-            while(prefixmin>0){
-                if(strs[i].substring(0,prefixmin).equalsIgnoreCase(strs[i+1].substring(0,prefixmin))){
-                    min=prefixmin;
-                    common=strs[i].substring(0,min);
+        }
+
+        for (int i = 0; i < strs.length - 1; i++) {
+            int minItemLength = Math.min(resultLength, Math.min(strs[i].length(), strs[i + 1].length()));
+            while (minItemLength > 0) {
+                if (strs[i].substring(0, minItemLength).equalsIgnoreCase(strs[i + 1].substring(0, minItemLength))) {
+                    resultLength = minItemLength;
+                    result = strs[i].substring(0, minItemLength);
                     break;
+                } else {
+                    minItemLength--;
                 }
-                prefixmin--;
-                if(prefixmin==0)
-                    return "";
+            }
+            if (minItemLength == 0) {
+                return "";
             }
         }
-        return common;
+        return result;
     }
-
 
     public static void main(String[] args) {
         LongestCommonPrefixSolution longestCommonPrefixSolution = new LongestCommonPrefixSolution();
         String[] strings = {"lee2333333ta", "lee2333333tb", "lee2333333"};
-        System.out.println(longestCommonPrefixSolution.longestCommonPrefix(strings));
+        System.out.println(longestCommonPrefixSolution.longestCommonPrefix2(strings));
     }
 
 }
