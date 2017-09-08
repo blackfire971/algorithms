@@ -39,17 +39,18 @@ public class LongestCommonPrefixSolution {
         }
 
         for (int i = 0; i < strs.length - 1; i++) {
-            int minItemLength = Math.min(resultLength, Math.min(strs[i].length(), strs[i + 1].length()));
-            while (minItemLength > 0) {
-                if (strs[i].substring(0, minItemLength).equalsIgnoreCase(strs[i + 1].substring(0, minItemLength))) {
-                    resultLength = minItemLength;
-                    result = strs[i].substring(0, minItemLength);
+            //check 2 words and get the one with smaller length
+            //compare the length with the common prefix of previous group
+            resultLength = Math.min(resultLength, Math.min(strs[i].length(), strs[i + 1].length()));
+            while (resultLength > 0) {
+                if (strs[i].substring(0, resultLength).equalsIgnoreCase(strs[i + 1].substring(0, resultLength))) {
+                    result = strs[i].substring(0, resultLength);
                     break;
                 } else {
-                    minItemLength--;
+                    resultLength--;
                 }
             }
-            if (minItemLength == 0) {
+            if (resultLength == 0) {
                 return "";
             }
         }
