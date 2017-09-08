@@ -9,6 +9,8 @@ import java.util.Stack;
  * determine if the input string is valid.
  * The brackets must close in the correct order,
  * "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+ *
+ * Push left brackets ONLY and pop up when meet right brackets is the normal way to solve symmetric problem
  */
 public class ValidParenthesesSolution {
 
