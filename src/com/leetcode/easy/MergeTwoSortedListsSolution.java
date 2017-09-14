@@ -18,10 +18,13 @@ public class MergeTwoSortedListsSolution {
         }
 
         if(l1.val < l2.val){
+            //ONLY change the next value of current node until the first node be processed.
             l1.next = mergeTwoLists(l1.next, l2);
+//            System.out.println(l1.val + " next: " + l1.next.val);
             return l1;
         } else{
             l2.next = mergeTwoLists(l1, l2.next);
+//            System.out.println(l2.val + " next: " + l2.next.val);
             return l2;
         }
     }
