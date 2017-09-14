@@ -22,38 +22,6 @@ public class RemoveDuplicatesSortedArraySolution {
         return i;
     }
 
-//    public int removeDuplicates(int[] nums) {
-//        if (nums == null || nums.length == 0) {
-//            return 0;
-//        }
-//
-//        int size = nums.length;
-//        int moveStep = 0;
-//
-//        for (int i = 0; i < nums.length - 1; i++) {
-//            if (i == size - 1) {
-//                break;
-//            }
-//            if (nums[i] == nums[i + 1]) {
-//                moveStep++;
-//            } else if (moveStep != 0 && nums[i] != nums[i + 1]) {
-//                move(nums, i + 1, moveStep);
-//                size = size - moveStep;
-//                i = i - moveStep;
-//                moveStep = 0;
-//            }
-//        }
-//        return size;
-//    }
-//
-//    public void move(int[] nums, int startIndex, int moveSteps) {
-//        for (int i = startIndex; i < nums.length - 1; i++) {
-//            nums[i - moveSteps] = nums[i];
-//        }
-//        for (int i = nums.length - 1; i > nums.length - 2 - moveSteps; i--) {
-//            nums[i] = 0;
-//        }
-//    }
 
     public static void main(String[] args) {
         RemoveDuplicatesSortedArraySolution removeDuplicatesSortedArraySolution = new RemoveDuplicatesSortedArraySolution();
