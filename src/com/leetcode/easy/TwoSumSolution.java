@@ -1,5 +1,8 @@
 package com.leetcode.easy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by saml on 9/6/2017.
  *
@@ -12,6 +15,7 @@ package com.leetcode.easy;
  * return [0, 1].
  *
  * O(1) O(N2)
+ * O(N) O(N)
  *
  */
 public class TwoSumSolution {
@@ -28,6 +32,22 @@ public class TwoSumSolution {
             }
         }
         return result;
+    }
+
+    public int[] twoSum2(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] result = new int[2];
+
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (map.containsKey(diff)) {
+                result[0] = map.get(diff);
+                result[1] = i;
+                return result;
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     public static void main(String[] args) {
