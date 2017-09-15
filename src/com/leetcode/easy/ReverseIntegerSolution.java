@@ -17,7 +17,7 @@ public class ReverseIntegerSolution {
 
     public static void main(String[] args) {
         ReverseIntegerSolution reverseIntegerSolution = new ReverseIntegerSolution();
-        System.out.println(reverseIntegerSolution.reverse(Integer.MAX_VALUE));
+        System.out.println(reverseIntegerSolution.reverse2(Integer.MAX_VALUE));
     }
 
     public int reverse(int x) {
