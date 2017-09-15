@@ -24,6 +24,6 @@ public class PalindromeNumberSolution {
 
     public static void main(String[] args) {
         PalindromeNumberSolution palindromeNumberSolution = new PalindromeNumberSolution();
-        System.out.println(palindromeNumberSolution.isPalindrome(2147447412));
+        System.out.println(palindromeNumberSolution.isPalindrome(123321));
     }
 }
