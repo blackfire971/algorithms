@@ -36,6 +36,8 @@ public class SearchInsertPositionSolution {
                 result = mid;
                 break;
             } else if (start == end) {
+                //position returned if found target above
+                //return insert position in case start = end
                 result = nums[start] > target ? start : start + 1;
                 break;
             } else if (target < nums[mid]) {
@@ -44,7 +46,7 @@ public class SearchInsertPositionSolution {
                 start = mid + 1;
             }
         }
-
+        //return insert position in case start > end
         return start > end ? start : result;
     }
 }
