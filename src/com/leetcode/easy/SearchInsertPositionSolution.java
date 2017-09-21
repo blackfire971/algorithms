@@ -17,8 +17,8 @@ public class SearchInsertPositionSolution {
 
     public static void main(String[] args) {
         SearchInsertPositionSolution searchInsertPositionSolution = new SearchInsertPositionSolution();
-        int[] a = {1, 3, 5, 6};
-        System.out.println(searchInsertPositionSolution.searchInsert(a, 2));
+        int[] a = {3, 5, 7, 9, 10};
+        System.out.println(searchInsertPositionSolution.searchInsert(a, 10));
     }
 
     public int searchInsert(int[] nums, int target) {
@@ -32,8 +32,11 @@ public class SearchInsertPositionSolution {
 
         while (start <= end) {
             int mid = (start + end) / 2;
-            if (target == nums[mid] || start == end) {
-                result = end;
+            if (target == nums[mid]) {
+                result = mid;
+                break;
+            } else if (start == end) {
+                result = nums[start] > target ? start : start + 1;
                 break;
             } else if (target < nums[mid]) {
                 end = mid - 1;
@@ -41,6 +44,7 @@ public class SearchInsertPositionSolution {
                 start = mid + 1;
             }
         }
-        return result == 0 ? result : result + 1;
+
+        return start > end ? start : result;
     }
 }
