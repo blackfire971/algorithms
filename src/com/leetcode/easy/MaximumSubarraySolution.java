@@ -15,36 +15,28 @@ package com.leetcode.easy;
  */
 public class MaximumSubarraySolution {
 
-
-    public int maxSubArray(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return Integer.MIN_VALUE;
-        }
-        return maxSubArray(nums, 0, nums.length);
-    }
     int result = 0;
-    public int maxSubArray(int[] nums, int start, int end) {
-
-        if (start > end) {
-            return result;
-        }
-
-        int mid = (start + end) / 2;
-        int start1 = start;
-        int end1 = mid - 1;
-        int start2 = mid;
-        int end2 = end;
-
-        maxSubArray(nums, start1, end1);
-        maxSubArray(nums, start2, end2);
-
-
-        return result;
-    }
+    int i = 0;
+    int sum = 0;
 
     public static void main(String[] args) {
         MaximumSubarraySolution maximumSubarraySolution = new MaximumSubarraySolution();
-        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] a = {-2, -1, -3, -4, -1, -2, -1, -15, -20};
         System.out.println(maximumSubarraySolution.maxSubArray(a));
+    }
+
+    public int maxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int sum=0;
+        for (int j = 0; j < nums.length; j++) {
+            sum += nums[j];
+            max = Math.max(max, sum);
+
+            sum = Math.max(sum, 0);
+        }
+        return max;
     }
 }
