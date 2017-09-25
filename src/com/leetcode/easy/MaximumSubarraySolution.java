@@ -21,6 +21,7 @@ public class MaximumSubarraySolution {
         System.out.println(maximumSubarraySolution.maxSubArray(a));
     }
 
+    //Kadane's algorithm
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
