@@ -15,13 +15,9 @@ package com.leetcode.easy;
  */
 public class MaximumSubarraySolution {
 
-    int result = 0;
-    int i = 0;
-    int sum = 0;
-
     public static void main(String[] args) {
         MaximumSubarraySolution maximumSubarraySolution = new MaximumSubarraySolution();
-        int[] a = {-2, -1, -3, -4, -1, -2, -1, -15, -20};
+        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4, 1000};
         System.out.println(maximumSubarraySolution.maxSubArray(a));
     }
 
@@ -29,13 +25,11 @@ public class MaximumSubarraySolution {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int max = Integer.MIN_VALUE;
-        int sum=0;
-        for (int j = 0; j < nums.length; j++) {
-            sum += nums[j];
-            max = Math.max(max, sum);
-
-            sum = Math.max(sum, 0);
+        int end_at = nums[0];
+        int max = nums[0];
+        for (int j = 1; j < nums.length; j++) {
+            end_at = Math.max(nums[j], end_at + nums[j]);
+            max = Math.max(max, end_at);
         }
         return max;
     }
