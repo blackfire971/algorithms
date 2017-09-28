@@ -56,17 +56,18 @@ public class AddBinarySolution {
     }
 
     public String addBinary2(String a, String b) {
-        int i = a.length() - 1;
-        int j = b.length() - 1;
-        int c = 0;
-        StringBuilder sb = new StringBuilder();
-        while(i >= 0 || j >= 0 || c > 0) {
-            c += i >= 0 ? a.charAt(i--) - '0' : 0;
-            c += j >= 0 ? b.charAt(j--) - '0' : 0;
-            sb.append(Integer.toString(c & 1));
-            c = c >> 1;
+        int al = a.length() - 1;
+        int bl = b.length() - 1;
+        int carry = 0;
+        StringBuffer stringBuffer = new StringBuffer();
+
+        while (al >= 0 || bl >= 0 || carry > 0) {
+            carry += al >= 0 ? a.charAt(al--) - '0' : 0;
+            carry += bl >= 0 ? b.charAt(bl--) - '0' : 0;
+            stringBuffer.append(carry & 1);
+            carry = carry >> 1;
         }
-        return sb.reverse().toString();
+        return stringBuffer.reverse().toString();
     }
 
     public static String padLeft(String s, char pad, int length) {
@@ -79,6 +80,7 @@ public class AddBinarySolution {
 
     public static void main(String[] args) {
 //        System.out.println(padLeft("s", '0', 5));
+        System.out.println(3 & 1);
         AddBinarySolution addBinarySolution = new AddBinarySolution();
         System.out.println(addBinarySolution.addBinary2("11111010101010", "10101010101010"));
     }
