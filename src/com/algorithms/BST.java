@@ -1,4 +1,4 @@
-package com.algorithms4;
+package com.algorithms;
 
 /**
  * Created by saml on 10/13/2017.
