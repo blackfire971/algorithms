@@ -1,13 +1,18 @@
-package com.algorithms4;
+package com.algorithms4.sort;
 
 /**
  * Created by saml on 10/31/2017.
  */
 public class SortTemplate {
-    public static int count;
+    public static int compareCount;
+    public static int exchangeCount;
 
-    public static void calculateSteps() {
-        count++;
+    public static void calculateCompareSteps() {
+        compareCount++;
+    }
+
+    public static void calculateExchangeSteps() {
+        exchangeCount++;
     }
 
     public static void sort(Comparable[] a) {
