@@ -3,18 +3,13 @@ package com.algorithms4;
 /**
  * Created by saml on 10/31/2017.
  */
-public class SelectionSort extends SortTemplate {
-
+public class InsertionSort extends SortTemplate {
     public static void sort(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
-            int min = i;
-            for (int j = i + 1; j < a.length; j++) {
+        for (int i = 1; i < a.length; i++) {
+            for (int j = i; j>0 && less(a[j], a[j-1]) ; j--) {
                 calculateSteps();
-                if (less(a[j], a[min])) {
-                    min = j;
-                }
+                exch(a, j, j - 1);
             }
-            exch(a, i, min);
         }
     }
 

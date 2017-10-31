@@ -6,6 +6,10 @@ package com.algorithms4;
 public class SortTemplate {
     public static int count;
 
+    public static void calculateSteps() {
+        count++;
+    }
+
     public static void sort(Comparable[] a) {
 
     }
