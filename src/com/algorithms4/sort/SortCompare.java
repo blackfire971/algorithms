@@ -17,6 +17,9 @@ public class SortCompare {
         if (alg == SortType.Selection) {
             SelectionSort.sort(a);
         }
+        if (alg == SortType.Shell) {
+            ShellSort.sort(a);
+        }
 
         //keep for other sort algorithms
 
@@ -36,9 +39,11 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        double selection_time = timeRandomInput(SortType.Selection, 500, 30);
-        double insertion_time = timeRandomInput(SortType.Insertion, 500, 30);
+        double selection_time = timeRandomInput(SortType.Selection, 10000, 20);
+        double insertion_time = timeRandomInput(SortType.Insertion, 10000, 20);
+        double shell_time = timeRandomInput(SortType.Shell, 10000, 20);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Selection, selection_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Insertion, insertion_time);
+        StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Shell, shell_time);
     }
 }
