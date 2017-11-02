@@ -20,6 +20,9 @@ public class SortCompare {
         if (alg == SortType.Shell) {
             ShellSort.sort(a);
         }
+        if (alg == SortType.Merge) {
+            MergeSort.sort(a);
+        }
 
         //keep for other sort algorithms
 
@@ -39,11 +42,13 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        double selection_time = timeRandomInput(SortType.Selection, 10000, 20);
-        double insertion_time = timeRandomInput(SortType.Insertion, 10000, 20);
-        double shell_time = timeRandomInput(SortType.Shell, 10000, 20);
+        double selection_time = timeRandomInput(SortType.Selection, 10000, 30);
+        double insertion_time = timeRandomInput(SortType.Insertion, 10000, 30);
+        double shell_time = timeRandomInput(SortType.Shell, 10000, 30);
+        double merge_time = timeRandomInput(SortType.Merge, 10000, 30);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Selection, selection_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Insertion, insertion_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Shell, shell_time);
+        StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Merge, merge_time);
     }
 }
