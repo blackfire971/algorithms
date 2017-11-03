@@ -6,6 +6,7 @@ package com.algorithms4.sort;
 public class MergeSort extends SortTemplate {
 
     static Comparable[] aux;
+    private static final int sub_arr_size = 10;
 
     public static void sort(Comparable[] a) {
         aux = new Comparable[a.length];
@@ -30,6 +31,15 @@ public class MergeSort extends SortTemplate {
                 a[k] = aux[i++];
             }
         }
+//        System.out.println("low:"+low+"  high:"+high);
+//        for (int k = 0; k < a.length; k++) {
+//            System.out.println(k + "     ");
+//        }
+//        System.out.println(" ");
+//        for (int k = 0; k < a.length; k++) {
+//            System.out.print(a[k]+"     ");
+//        }
+//        System.out.println(" ");
     }
 
     private static void sort(Comparable[] a, int low, int high) {
@@ -37,22 +47,15 @@ public class MergeSort extends SortTemplate {
         if (high <= low) {
             return;
         }
+
         int mid = (high + low) / 2;
         sort(a, low, mid);
         sort(a, mid + 1, high);
         merge(a, low, mid, high);
-        for (int i = low; i <= high; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.println(" ");
-        for (int i = low; i <= high; i++) {
-            System.out.print(a[i] + " ");
-        }
-        System.out.println(" ");
     }
 
     public static void main(String[] args) {
-        Integer[] is = new Integer[12];
+        Integer[] is = new Integer[13];
 
         is[0] = 5;
         is[1] = 4;
@@ -66,6 +69,7 @@ public class MergeSort extends SortTemplate {
         is[9] = 2;
         is[10] = 4;
         is[11] = 3;
+        is[12] = 100;
 
 
         Comparable[] a = is;
