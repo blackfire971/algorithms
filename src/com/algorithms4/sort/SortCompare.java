@@ -46,9 +46,11 @@ public class SortCompare {
         double insertion_time = timeRandomInput(SortType.Insertion, 100000, 1);
         double shell_time = timeRandomInput(SortType.Shell, 100000, 1);
         double merge_time = timeRandomInput(SortType.Merge, 100000, 1);
+        double quick_time = timeRandomInput(SortType.Quick, 100000, 1);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Selection, selection_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Insertion, insertion_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Shell, shell_time);
         StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Merge, merge_time);
+        StdOut.printf("For %s, the total time is: %.1f seconds.  \n", SortType.Quick, quick_time);
     }
 }

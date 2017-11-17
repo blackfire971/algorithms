@@ -44,5 +44,17 @@ public class SortTemplate {
         return true;
     }
 
+    public static void printArry(Comparable[] a, int low, int high, int j) {
+        System.out.println("low:" + low + "  high:" + high + "  j:" + j);
+        for (int k = 0; k < a.length; k++) {
+            System.out.print(k + "     ");
+        }
+        System.out.println(" ");
+        for (int k = 0; k < a.length; k++) {
+            System.out.print(a[k]+"     ");
+        }
+        System.out.println(" ");
+    }
+
 
 }
