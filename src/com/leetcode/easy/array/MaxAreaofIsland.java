@@ -1,4 +1,4 @@
-package com.leetcode.easy;
+package com.leetcode.easy.array;
 
 /**
  * Created by Sam Li on 1/18/2018.
