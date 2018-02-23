@@ -78,6 +78,12 @@ public class PrimeIdentification {
         return mAndK;
     }
 
+    /**
+     * Convert M from integer to binary
+     *
+     * @param m
+     * @return
+     */
     public static byte[] getByteFromM(int m) {
         StringBuilder sb = new StringBuilder();
         while (m > 0) {
