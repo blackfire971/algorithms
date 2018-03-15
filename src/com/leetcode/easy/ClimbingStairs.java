@@ -14,7 +14,7 @@ public class ClimbingStairs {
         ClimbingStairs climbingStairs = new ClimbingStairs();
         long start = System.currentTimeMillis();
         System.out.println(climbingStairs.climbStairs2(2));
-        System.out.println(System.currentTimeMillis() - start);
+//        System.out.println(System.currentTimeMillis() - start);
     }
 
     // Recursion generate duplicate branch calculation, more time and space consumption.
@@ -45,6 +45,7 @@ public class ClimbingStairs {
     }
 
     //reduce the space occupation, only keep final result.
+    //DP
     public int climbStairs2(int n) {
         int i = 0;
         int j = 1;

@@ -1,4 +1,4 @@
-package com.leetcode.easy;
+package com.leetcode.easy.array;
 
 /**
  * Created by saml on 10/11/2017.
