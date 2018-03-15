@@ -1,4 +1,4 @@
-package com.test2;
+package com.algorithms4.sort.test2;
 
 /**
  * Created by Sam Li on 3/14/2018.
