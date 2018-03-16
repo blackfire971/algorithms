@@ -12,33 +12,28 @@ public class QuickSort {
         if (high <= low) {
             return;
         }
-        int pointcut = partition(arr, low, high);
-        sort(arr, low, pointcut - 1);
-        sort(arr, pointcut + 1, high);
+        int i = low, j = high;
+        int pointcut = arr[(j+i)/2];
+        while (i <= j) {
+            while (arr[i] < pointcut) {
+                i++;
+            }
+            while (arr[j] > pointcut) {
+                j--;
+            }
+            if (i < j) {
+                exchange(arr, i, j);
+                i++;
+                j--;
+            } else if (i == j) {
+                i++;
+            }
+
+        }
+        sort(arr, low, i);
+        sort(arr, j, high);
     }
 
-    public static int partition(int[] arr, int low, int high) {
-        int i = low, j = high + 1;
-        int pointcut = arr[low];
-        while (true) {
-            while (arr[++i] < pointcut) {
-                if (i == high) {
-                    break;
-                }
-            }
-            while (arr[--j] > pointcut) {
-                if (j == low) {
-                    break;
-                }
-            }
-            if (i >= j) {
-                break;
-            }
-            exchange(arr, i, j);
-        }
-        exchange(arr, low, j);
-        return j;
-    }
 
     public static void exchange(int[] arr, int i, int j) {
         int tmp = arr[i];

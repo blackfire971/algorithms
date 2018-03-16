@@ -1,53 +1,46 @@
 package com.algorithms4.sort.test2;
 
+import java.util.Random;
+
 /**
  * Created by saml on 3/15/2018.
  */
 public class QuickSort {
     public static void sort(int[] arr) {
-        sort(arr, 0, arr.length - 1);
+        qSort(arr, 0, arr.length - 1);
     }
 
-    public static void sort(int[] arr, int low, int high) {
-        if (low >= high) {
+    public static void qSort(int[] arr, int head, int tail) {
+        if (head >= tail || arr == null || arr.length <= 1) {
             return;
         }
-        int pointcut = partition(arr, low, high);
-        sort(arr, low, pointcut - 1);
-        sort(arr, pointcut + 1, high);
-    }
+        Random random = new Random();
 
-    public static int partition(int[] arr, int low, int high) {
-        int i = low, j = high + 1;
-        int refer = arr[low];
-        while (true) {
-            while (arr[++i] < refer) {
-                if (i==high) {
-                    break;
-                }
+        int i = head, j = tail, pivot = arr[(head + tail) / 2];
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
             }
-            while (arr[--j] > refer) {
-                if (j == low) {
-                    break;
-                }
+            while (arr[j] > pivot) {
+                j--;
             }
-            if (i >= j) {
-                break;
+            if (i < j) {
+                int t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+                i++;
+                j--;
+            } else if (i == j) {
+                i++; //use to exit from the loop
             }
-            exchange(arr, i, j);
         }
-        exchange(arr, low, j);
-        return j;
+        qSort(arr, head, j);
+        qSort(arr, i, tail);
     }
 
-    public static void exchange(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
 
     public static void main(String[] args) {
-        int[] array = {2, 3, 6, 6, 3, 2, 5, 7, 89, 6, 4, 2, 1, 2, 56, 78, 9};
+        int[] array = {5, 5, 6, 2, 1, 2, 3, 4, 5, 6, 6, 7};
         sort(array);
         for (int item:array) {
             System.out.print(item+",");
