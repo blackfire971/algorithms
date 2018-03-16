@@ -30,8 +30,8 @@ public class QuickSort {
             }
 
         }
-        sort(arr, low, i);
-        sort(arr, j, high);
+        sort(arr, low, j);
+        sort(arr, i, high);
     }
 
 
