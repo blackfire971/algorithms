@@ -1,5 +1,7 @@
 package com.algorithms4.sort.test1;
 
+import java.util.Random;
+
 /**
  * Created by saml on 3/15/2018.
  */
@@ -9,16 +11,18 @@ public class QuickSort {
     }
 
     public static void sort(int[] arr, int low, int high) {
-        if (high <= low) {
+        if (low >= high || arr == null || arr.length <= 1) {
             return;
         }
-        int i = low, j = high;
-        int pointcut = arr[(j+i)/2];
+        int i = low;
+        int j = high;
+        Random random = new Random();
+        int pivot = random.nextInt(high - low) + low;
         while (i <= j) {
-            while (arr[i] < pointcut) {
+            while (arr[i] < arr[pivot]) {
                 i++;
             }
-            while (arr[j] > pointcut) {
+            while (arr[j] > arr[pivot]) {
                 j--;
             }
             if (i < j) {
@@ -28,7 +32,6 @@ public class QuickSort {
             } else if (i == j) {
                 i++;
             }
-
         }
         sort(arr, low, j);
         sort(arr, i, high);
