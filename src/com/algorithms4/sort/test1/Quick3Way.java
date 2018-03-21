@@ -10,22 +10,22 @@ public class Quick3Way {
     }
 
     public static void sort(int[] arr, int low, int high) {
-        int i = low, j = high, cursor = low;
-        if (i >= j || arr == null || arr.length <= 1) {
+        if (low >= high) {
             return;
         }
+        int i = low, j = high, cursor = low;
         int pivot = arr[(high + low) / 2];
         while (cursor <= j) {
             if (arr[cursor] < pivot) {
-                exchange(arr, cursor++, i++);
+                exchange(arr, i++, cursor++);
             } else if (arr[cursor] > pivot) {
-                exchange(arr, cursor, j--);
+                exchange(arr, j--, cursor);
             } else {
                 cursor++;
             }
-            sort(arr, low, i-1);
-            sort(arr, j + 1, high);
         }
+        sort(arr, low, i - 1);
+        sort(arr, j + 1, high);
     }
 
     public static void exchange(int[] arr, int i, int j) {
