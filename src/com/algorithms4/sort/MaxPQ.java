@@ -3,6 +3,16 @@ package com.algorithms4.sort;
 import com.algorithms4.utils.Utils;
 
 /**
+ * When the index of first item is 1, then
+ * Left son position 2k
+ * Right son position 2k +1
+ * Parent position k/2
+ *
+ * When the index of first item is 0, then
+ * Left son position is 2k + 1
+ * Right son position is 2K + 2
+ * Parent position is (i-1)/2
+ *
  * Created by saml on 3/23/2018.
  */
 public class MaxPQ {
@@ -24,8 +34,8 @@ public class MaxPQ {
     }
     public void insert(int v) {
 
-        arr[++size] = v;
-        swim(arr, size);
+        arr[size++] = v;
+        swim(arr, size - 1);
     }
 
 //    public int getMax() {
@@ -34,10 +44,13 @@ public class MaxPQ {
 
     public int deleteMax() {
 
-        int max = arr[1];
-        Utils.exchange(arr, 1, size--);
-        arr[size + 1] = 0;
-        sink(arr, 1, size);
+        if (size == 1) {
+            return arr[0];
+        }
+        int max = arr[0];
+        Utils.exchange(arr, 0, --size);
+        arr[size] = 0;
+        sink(arr, 0, size);
         return max;
     }
 
@@ -51,9 +64,9 @@ public class MaxPQ {
 
 
     public void sink(int[] arr, int k, int size) {
-        while (2 * k <= size) {
-            int j = 2 * k;
-            if (j < size && (arr[j] < arr[j + 1])) {
+        while (2 * k + 1 <= size -1) {
+            int j = 2 * k + 1;
+            if (j < size - 1 && (arr[j] < arr[j + 1])) {
                 j++;
             }
             if (arr[k] > arr[j]) {
@@ -65,9 +78,9 @@ public class MaxPQ {
     }
 
     public void swim(int[] arr, int k) {
-        while (k > 1 && (arr[k / 2] < arr[k])) {
-            Utils.exchange(arr, k / 2, k);
-            k = k / 2;
+        while (k > 0 && (arr[(k - 1) / 2] < arr[k])) {
+            Utils.exchange(arr, ((k - 1) / 2 ), k);
+            k = (k - 1) / 2;
         }
     }
 

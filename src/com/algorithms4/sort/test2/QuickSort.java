@@ -1,5 +1,7 @@
 package com.algorithms4.sort.test2;
 
+import com.algorithms4.utils.Utils;
+
 import java.util.Random;
 
 /**
@@ -25,9 +27,7 @@ public class QuickSort {
                 j--;
             }
             if (i < j) {
-                int t = arr[i];
-                arr[i] = arr[j];
-                arr[j] = t;
+                Utils.exchange(arr, i, j);
                 i++;
                 j--;
             } else if (i == j) {
